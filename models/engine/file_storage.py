@@ -10,13 +10,12 @@ class FileStorage():
         return FileStorage.__objects
     
     def new(self, obj):
-        FileStorage.__objects[f"{obj.__class__.__name__}.{obj.id}"] = obj
+        ocname = obj.__class__.__name__
+        FileStorage.__objects["{}.{}".format(ocname, obj.id)] = obj
 
     def save(self):
         odict = FileStorage.__objects
-        print(f"this is odict: {odict}")
         objdict = {obj: odict[obj].to_dict() for obj in odict.keys()}
-        print(f"this is objdict: {objdict}")
         with open(FileStorage.__file_path, "w") as f:
             json.dump(objdict, f)
 
