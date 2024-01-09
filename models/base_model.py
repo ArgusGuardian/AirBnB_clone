@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 import uuid
 from datetime import datetime
+import models
+
 
 class BaseModel():
     def __init__(self, *args, **kwargs):
@@ -10,49 +12,26 @@ class BaseModel():
         if kwargs is not None:
             date_format = "%Y-%m-%dT%H:%M:%S.%f"
             for key,value in kwargs.items():
-                if key == '__class__':
-                    continue
-                elif key == 'created_at':
+                if key == 'created_at' or key == 'updated_at':
                     self.__dict__[key] = datetime.strptime(value, date_format)
-                elif key == 'updated_at':
-                    self.__dict__[key] = datetime.strptime(value, date_format)
-                else:
+                elif key != '__class__':
                     self.__dict__[key] = value
-
-    def __str__(self):
-        return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
-
+        else:
+            models.storage.new(self)
     
     def save(self):
         self.updated_at = datetime.now()
+        models.storage.save()
 
     def to_dict(self):
         created_at_iso = self.created_at.isoformat()
         updated_at_iso = self.updated_at.isoformat()
-        dic = self.__dict__
+        dic = self.__dict__.copy()
         dic['__class__'] = self.__class__.__name__
         dic['created_at'] = created_at_iso
         dic['updated_at'] = updated_at_iso
         return dic
 
-my_model = BaseModel()
-my_model.name = "My_First_Model"
-my_model.my_number = 89
-print(my_model.id)
-print(my_model)
-print(type(my_model.created_at))
-print("--")
-my_model_json = my_model.to_dict()
-print(my_model_json)
-print("JSON of my_model:")
-for key in my_model_json.keys():
-    print("\t{}: ({}) - {}".format(key, type(my_model_json[key]), my_model_json[key]))
+    def __str__(self):
+        return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
 
-print("--")
-my_new_model = BaseModel(**my_model_json)
-print(my_new_model.id)
-print(my_new_model)
-print(type(my_new_model.created_at))
-
-print("--")
-print(my_model is my_new_model)
