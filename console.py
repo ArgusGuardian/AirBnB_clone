@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 import cmd
+import re
 from models.base_model  import BaseModel
 from models.user import User
 from models.city import City
@@ -70,15 +71,35 @@ class HBNBCommand(cmd.Cmd):
             print(new.id)
             storage.save()
 
-    def default(self, arg):
-        list1 = arg.split(".,()")
-        list1[0], list1[1] = list1[1], list1[0]
-        args = list1
-        functions = {
-            "all" : self.do_all(),
-            "count" : self.do_count()
-        }
+    def do_count(self, arg):
+        args = parse_arguments(arg)
+        instances = storage.all()
+        class_name = args[0]
+        count = sum(1 for key in instances.keys() if key.startswith(class_name + "."))
+        print(count)
 
+    def default(self, arg):
+        functions = {
+            "all" : 'self.do_all(args)',
+            "count" : 'self.do_count(args)',
+            "show" : 'self.do_show(args)',
+            "destroy" : 'self.do_destroy(args)',
+            "update" : 'self.do_update(args)',
+        }
+        list1=re.split(r'[.,()\s]+', arg)
+        args = [item for item in list1 if item]
+        if len(args) >= 2:
+            func = args[1]
+            args.pop(1)
+            args = ' '.join(args)
+            if func in functions.keys():
+                eval(functions[func])
+            else:
+                print("*** Unknown syntax: {}".format(arg))
+                return False
+        else:
+                print("*** Unknown syntax: {}".format(arg))
+                return False
 
 
     def do_show(self, arg):
