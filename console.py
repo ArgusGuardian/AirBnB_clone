@@ -31,7 +31,6 @@ def parse_arguments(arg):
     return arguments
 
 
-
 class HBNBCommand(cmd.Cmd):
     prompt = '(hbnb) '
     __classes = {
@@ -70,6 +69,16 @@ class HBNBCommand(cmd.Cmd):
             new = eval(arg)()
             print(new.id)
             storage.save()
+
+    def default(self, arg):
+        list1 = arg.split(".,()")
+        list1[0], list1[1] = list1[1], list1[0]
+        args = list1
+        functions = {
+            "all" : self.do_all(),
+            "count" : self.do_count()
+        }
+
 
 
     def do_show(self, arg):
@@ -161,5 +170,7 @@ class HBNBCommand(cmd.Cmd):
 
                 setattr(instance, attribute_name, value_str)
                 instance.save()
+    
+    
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
