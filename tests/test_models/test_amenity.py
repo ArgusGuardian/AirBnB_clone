@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+"""unittests for base Amenity"""
+
 import unittest
 from models.amenity import Amenity
 from models.base_model import BaseModel
@@ -6,7 +8,9 @@ from models import storage
 from datetime import datetime
 
 
-class TestBase_State(unittest.TestCase):
+class TestBase_Amenity(unittest.TestCase):
+    """unittests for base Amenity"""
+
     def test_type(self):
         self.assertEqual(Amenity, type(Amenity()))
 
@@ -29,6 +33,7 @@ class TestBase_State(unittest.TestCase):
         a = Amenity()
         b = Amenity()
         self.assertNotEqual(a.id, b.id)
+
 
 if __name__ == "__main__":
     unittest.main()

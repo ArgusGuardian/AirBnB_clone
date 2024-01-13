@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""unittests for base Review"""
 import unittest
 from models.review import Review
 from models.base_model import BaseModel
@@ -7,6 +8,8 @@ from datetime import datetime
 
 
 class TestBase_Review(unittest.TestCase):
+    """unittests for base Review"""
+
     def test_type(self):
         self.assertEqual(Review, type(Review()))
 
@@ -29,6 +32,7 @@ class TestBase_Review(unittest.TestCase):
         a = Review()
         b = Review()
         self.assertNotEqual(a.id, b.id)
+
 
 if __name__ == "__main__":
     unittest.main()

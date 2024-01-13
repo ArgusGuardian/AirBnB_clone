@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""unittests for base City"""
 import unittest
 from models.city import City
 from models.base_model import BaseModel
@@ -7,6 +8,8 @@ from datetime import datetime
 
 
 class TestBase_City(unittest.TestCase):
+    """unittests for base City"""
+
     def test_type(self):
         self.assertEqual(City, type(City()))
 
@@ -29,6 +32,7 @@ class TestBase_City(unittest.TestCase):
         a = City()
         b = City()
         self.assertNotEqual(a.id, b.id)
+
 
 if __name__ == "__main__":
     unittest.main()

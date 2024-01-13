@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""unittests for base State"""
 import unittest
 from models.state import State
 from models.base_model import BaseModel
@@ -7,6 +8,8 @@ from datetime import datetime
 
 
 class TestBase_State(unittest.TestCase):
+    """unittests for base State"""
+
     def test_type(self):
         self.assertEqual(State, type(State()))
 
@@ -29,6 +32,7 @@ class TestBase_State(unittest.TestCase):
         a = State()
         b = State()
         self.assertNotEqual(a.id, b.id)
+
 
 if __name__ == "__main__":
     unittest.main()

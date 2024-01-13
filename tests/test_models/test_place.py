@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""unittests for base Place"""
 import unittest
 from models.place import Place
 from models.base_model import BaseModel
@@ -7,6 +8,8 @@ from datetime import datetime
 
 
 class TestBase_PLace(unittest.TestCase):
+    """unittests for base Place"""
+
     def test_type(self):
         self.assertEqual(Place, type(Place()))
 
@@ -29,6 +32,7 @@ class TestBase_PLace(unittest.TestCase):
         cy1 = Place()
         cy2 = Place()
         self.assertNotEqual(cy1.id, cy2.id)
+
 
 if __name__ == "__main__":
     unittest.main()
