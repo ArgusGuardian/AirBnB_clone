@@ -7,7 +7,7 @@ from datetime import datetime
 from time import sleep
 
 
-class TestBase_instantiation(unittest.TestCase):
+class TestBase_BaseModel(unittest.TestCase):
     """Unittests for testing instantiation of the BaseModel class"""
 
     def test_id(self):
@@ -24,7 +24,7 @@ class TestBase_instantiation(unittest.TestCase):
     def test_created_at_type(self):
         self.assertEqual(datetime, type(BaseModel().created_at))
 
-    def test_cupdated_at_type(self):
+    def test_updated_at_type(self):
         self.assertEqual(datetime, type(BaseModel().updated_at))
 
     def test_instance_in_objects(self):
