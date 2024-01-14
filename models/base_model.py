@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-"""module base_model that all other classes will inherit from"""
+"""
+module base_model that all other classes will inherit from
+"""
 import uuid
 from datetime import datetime
 import models
