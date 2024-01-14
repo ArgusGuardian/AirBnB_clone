@@ -33,6 +33,15 @@ class TestBase_Review(unittest.TestCase):
         b = Review()
         self.assertNotEqual(a.id, b.id)
 
+    def test_place_id_str(self):
+        self.assertEqual(str, type(Review.place_id))
+
+    def test_user_id_str(self):
+        self.assertEqual(str, type(Review.user_id))
+
+    def test_text_str(self):
+        self.assertEqual(str, type(Review.text))
+
 
 if __name__ == "__main__":
     unittest.main()

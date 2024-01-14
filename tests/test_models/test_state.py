@@ -33,6 +33,9 @@ class TestBase_State(unittest.TestCase):
         b = State()
         self.assertNotEqual(a.id, b.id)
 
+    def test_email_is_public_str(self):
+        self.assertEqual(str, type(State.name))
+
 
 if __name__ == "__main__":
     unittest.main()

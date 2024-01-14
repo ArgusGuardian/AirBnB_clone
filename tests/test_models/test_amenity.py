@@ -34,6 +34,9 @@ class TestBase_Amenity(unittest.TestCase):
         b = Amenity()
         self.assertNotEqual(a.id, b.id)
 
+    def test_email_is_public_str(self):
+        self.assertEqual(str, type(Amenity.name))
+
 
 if __name__ == "__main__":
     unittest.main()

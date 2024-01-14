@@ -33,6 +33,12 @@ class TestBase_City(unittest.TestCase):
         b = City()
         self.assertNotEqual(a.id, b.id)
 
+    def test_email_is_public_str(self):
+        self.assertEqual(str, type(City.state_id))
+
+    def test_password_is_public_str(self):
+        self.assertEqual(str, type(City.name))
+
 
 if __name__ == "__main__":
     unittest.main()
