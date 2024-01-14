@@ -11,7 +11,7 @@ from models.place import Place
 from models.city import City
 from models.amenity import Amenity
 from models.review import Review
-
+import os
 
 class Test_FileStorage(unittest.TestCase):
     """unittests for base file storage"""
@@ -34,6 +34,25 @@ class Test_FileStorage(unittest.TestCase):
 
     def test_all(self):
         self.assertEqual(dict, type(models.storage.all()))
+    
+    @classmethod
+    def setUp(self):
+        try:
+            os.rename("file.json", "tmp")
+        except IOError:
+            pass
+
+    @classmethod
+    def tearDown(self):
+        try:
+            os.remove("file.json")
+        except IOError:
+            pass
+        try:
+            os.rename("tmp", "file.json")
+        except IOError:
+            pass
+        FileStorage._FileStorage__objects = {}
 
     def test_new(self):
         bm = BaseModel()
