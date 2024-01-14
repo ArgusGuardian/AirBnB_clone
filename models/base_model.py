@@ -8,7 +8,6 @@ import models
 class BaseModel():
     """class BaseModel that defines all common
     attributes/methods for other classes"""
-
     def __init__(self, *args, **kwargs):
         """initialize attributes for class BaseModel"""
         self.id = str(uuid.uuid4())
