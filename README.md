@@ -223,4 +223,3 @@ $ cat file.json
 
 - **`test_save_reload_base_model.py`:**
   - Test module to verify the functionality of saving and reloading instances using the `BaseModel` class.
-
