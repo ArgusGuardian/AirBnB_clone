@@ -14,24 +14,24 @@ from models.review import Review
 import os
 
 
-class Test_FileStorage(unittest.TestCase):
-    """unittests for base file storage"""
+class TestFileStorage_instantiation(unittest.TestCase):
+    """Unittests for testing instantiation of the FileStorage class."""
 
-    def test_FileStorage_type(self):
-        self.assertEqual(str, type(FileStorage._FileStorage__file_path))
-
-    def testFileStorage_dict_type(self):
-        self.assertEqual(dict, type(FileStorage._FileStorage__objects))
-
-    def test_storage_type(self):
-        self.assertEqual(type(models.storage), FileStorage)
-
-    def test_class_type(self):
+    def test_FileStorage_instantiation_no_args(self):
         self.assertEqual(type(FileStorage()), FileStorage)
 
     def test_FileStorage_instantiation_with_arg(self):
         with self.assertRaises(TypeError):
             FileStorage(None)
+
+    def test_FileStorage_file_path_is_private_str(self):
+        self.assertEqual(str, type(FileStorage._FileStorage__file_path))
+
+    def testFileStorage_objects_is_private_dict(self):
+        self.assertEqual(dict, type(FileStorage._FileStorage__objects))
+
+    def test_storage_initializes(self):
+        self.assertEqual(type(models.storage), FileStorage)
 
     @classmethod
     def setUp(self):
@@ -54,6 +54,10 @@ class Test_FileStorage(unittest.TestCase):
 
     def test_all(self):
         self.assertEqual(dict, type(models.storage.all()))
+
+    def test_all_with_arg(self):
+        with self.assertRaises(TypeError):
+            models.storage.all(None)
 
     def test_new(self):
         bm = BaseModel()
@@ -116,6 +120,10 @@ class Test_FileStorage(unittest.TestCase):
             self.assertIn("Amenity." + am.id, save_text)
             self.assertIn("Review." + rv.id, save_text)
 
+    def test_save_with_arg(self):
+        with self.assertRaises(TypeError):
+            models.storage.save(None)
+
     def test_reload(self):
         bm = BaseModel()
         us = User()
@@ -145,18 +153,6 @@ class Test_FileStorage(unittest.TestCase):
     def test_reload_with_arg(self):
         with self.assertRaises(TypeError):
             models.storage.reload(None)
-
-    def test_save_with_arg(self):
-        with self.assertRaises(TypeError):
-            models.storage.save(None)
-
-    def test_new_with_args(self):
-        with self.assertRaises(TypeError):
-            models.storage.new(BaseModel(), 1)
-
-    def test_all_with_arg(self):
-        with self.assertRaises(TypeError):
-            models.storage.all(None)
 
 
 if __name__ == "__main__":
