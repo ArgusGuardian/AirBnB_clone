@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-"""unittests for base State"""
+"""
+unittests for base State
+"""
 import unittest
 from models.state import State
 from models.base_model import BaseModel
