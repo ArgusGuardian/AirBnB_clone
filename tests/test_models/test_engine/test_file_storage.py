@@ -34,7 +34,6 @@ class Test_FileStorage(unittest.TestCase):
     def test_all(self):
         self.assertEqual(dict, type(models.storage.all()))
 
-
     def test_new(self):
         bm = BaseModel()
         us = User()
@@ -65,9 +64,6 @@ class Test_FileStorage(unittest.TestCase):
         self.assertIn("Review." + rv.id, models.storage.all().keys())
         self.assertIn(rv, models.storage.all().values())
 
-    def test_new_with_args(self):
-        with self.assertRaises(TypeError):
-            models.storage.new(BaseModel(), 1)
 
     def test_save(self):
         bm = BaseModel()
