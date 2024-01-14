@@ -21,3 +21,7 @@ class Test_FileStorage(unittest.TestCase):
 
     def test_class_type(self):
         self.assertEqual(type(FileStorage()), FileStorage)
+
+
+if __name__ == "__main__":
+    unittest.main()
