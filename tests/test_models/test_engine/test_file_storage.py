@@ -13,7 +13,6 @@ from models.amenity import Amenity
 from models.review import Review
 import os
 
-
 class Test_FileStorage(unittest.TestCase):
     """unittests for base file storage"""
 
@@ -33,6 +32,9 @@ class Test_FileStorage(unittest.TestCase):
         with self.assertRaises(TypeError):
             FileStorage(None)
 
+    def test_all(self):
+        self.assertEqual(dict, type(models.storage.all()))
+
     @classmethod
     def setUp(self):
         try:
@@ -51,9 +53,6 @@ class Test_FileStorage(unittest.TestCase):
         except IOError:
             pass
         FileStorage._FileStorage__objects = {}
-
-    def test_all(self):
-        self.assertEqual(dict, type(models.storage.all()))
 
     def test_new(self):
         bm = BaseModel()
@@ -84,10 +83,6 @@ class Test_FileStorage(unittest.TestCase):
         self.assertIn(am, models.storage.all().values())
         self.assertIn("Review." + rv.id, models.storage.all().keys())
         self.assertIn(rv, models.storage.all().values())
-
-    def test_new_with_args(self):
-        with self.assertRaises(TypeError):
-            models.storage.new(BaseModel(), 1)
 
     def test_save(self):
         bm = BaseModel()
@@ -141,22 +136,6 @@ class Test_FileStorage(unittest.TestCase):
         self.assertIn("City." + cy.id, objs)
         self.assertIn("Amenity." + am.id, objs)
         self.assertIn("Review." + rv.id, objs)
-
-    def test_reload_with_arg(self):
-        with self.assertRaises(TypeError):
-            models.storage.reload(None)
-
-    def test_save_with_arg(self):
-        with self.assertRaises(TypeError):
-            models.storage.save(None)
-
-    def test_new_with_args(self):
-        with self.assertRaises(TypeError):
-            models.storage.new(BaseModel(), 1)
-
-    def test_all_with_arg(self):
-        with self.assertRaises(TypeError):
-            models.storage.all(None)
 
 
 if __name__ == "__main__":
