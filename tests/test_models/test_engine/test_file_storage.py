@@ -33,9 +33,6 @@ class Test_FileStorage(unittest.TestCase):
         with self.assertRaises(TypeError):
             FileStorage(None)
 
-    def test_all(self):
-        self.assertEqual(dict, type(models.storage.all()))
-
     @classmethod
     def setUp(self):
         try:
@@ -54,6 +51,9 @@ class Test_FileStorage(unittest.TestCase):
         except IOError:
             pass
         FileStorage._FileStorage__objects = {}
+
+    def test_all(self):
+        self.assertEqual(dict, type(models.storage.all()))
 
     def test_new(self):
         bm = BaseModel()
