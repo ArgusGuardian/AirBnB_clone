@@ -45,8 +45,8 @@ class TestBase_BaseModel(unittest.TestCase):
     def test_args_unused(self):
         a = BaseModel(None)
         self.assertNotIn(None, a.__dict__.values())
-    
-     def test_str_representation(self):
+
+    def test_str_representation(self):
         dt = datetime.today()
         dt_repr = repr(dt)
         bm = BaseModel()
@@ -81,6 +81,7 @@ class TestBase_BaseModel(unittest.TestCase):
         self.assertEqual(bm.id, "345")
         self.assertEqual(bm.created_at, dt)
         self.assertEqual(bm.updated_at, dt)
+
 
 if __name__ == "__main__":
     unittest.main()

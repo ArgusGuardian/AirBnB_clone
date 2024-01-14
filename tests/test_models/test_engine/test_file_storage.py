@@ -11,6 +11,8 @@ from models.place import Place
 from models.city import City
 from models.amenity import Amenity
 from models.review import Review
+import os
+
 
 class Test_FileStorage(unittest.TestCase):
     """unittests for base file storage"""
@@ -52,6 +54,7 @@ class Test_FileStorage(unittest.TestCase):
         except IOError:
             pass
         FileStorage._FileStorage__objects = {}
+
     def test_new(self):
         bm = BaseModel()
         us = User()
@@ -82,7 +85,6 @@ class Test_FileStorage(unittest.TestCase):
         self.assertIn("Review." + rv.id, models.storage.all().keys())
         self.assertIn(rv, models.storage.all().values())
 
-
     def test_save(self):
         bm = BaseModel()
         us = User()
@@ -110,7 +112,6 @@ class Test_FileStorage(unittest.TestCase):
             self.assertIn("Amenity." + am.id, save_text)
             self.assertIn("Review." + rv.id, save_text)
 
-
     def test_reload(self):
         bm = BaseModel()
         us = User()
@@ -136,8 +137,6 @@ class Test_FileStorage(unittest.TestCase):
         self.assertIn("City." + cy.id, objs)
         self.assertIn("Amenity." + am.id, objs)
         self.assertIn("Review." + rv.id, objs)
-
-
 
 
 if __name__ == "__main__":
