@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-"""unittests for base City"""
+"""
+unittests for base City
+"""
 import unittest
 from models.city import City
 from models.base_model import BaseModel
