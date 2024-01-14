@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-"""testing all cases for class BaseModel"""
+"""
+testing all cases for class BaseModel
+"""
 import unittest
 from models.base_model import BaseModel
 from models import storage
