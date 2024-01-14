@@ -13,6 +13,7 @@ from models.amenity import Amenity
 from models.review import Review
 import os
 
+
 class Test_FileStorage(unittest.TestCase):
     """unittests for base file storage"""
 
@@ -34,7 +35,7 @@ class Test_FileStorage(unittest.TestCase):
 
     def test_all(self):
         self.assertEqual(dict, type(models.storage.all()))
-    
+
     @classmethod
     def setUp(self):
         try:
