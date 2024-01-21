@@ -10,7 +10,7 @@
 }
 
 .places_title {
-  padding-top: 30px;
+  padding-top: 15px;
   margin-bottom: -25px;
 }
 
@@ -33,5 +33,4 @@
 
 article h2 {
   font-size: 30px;
-  margin-top: -2px;
 }

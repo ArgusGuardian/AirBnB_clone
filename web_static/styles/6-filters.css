@@ -87,6 +87,7 @@ li {
 
 ul {
     padding-top: 30px;
+    list-style: none;
 }
 
 .locations:hover>.popover {
@@ -96,9 +97,5 @@ ul {
 
 .amenities:hover>.popover {
     visibility: visible;
-}
-
-
-ul {
-    list-style: none;
+    margin-bottom: 50px;
 }
