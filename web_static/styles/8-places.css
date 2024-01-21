@@ -90,7 +90,8 @@ article h2 {
 }
 
 .guest_icon {
-  height: 100%;
+  height: 50px;
+  width: 50px;
   background: url("../images/icon_group.png");
   background-repeat: no-repeat;
 }
@@ -110,11 +111,11 @@ article h2 {
 }
 
 .rooms_icon {
-  height: inherit;
-  width: inherit;
+  height: 50px;
+  width: 50px;
   background: url("../images/icon_bed.png");
   background-repeat: no-repeat;
-  margin-left: 35px;
+  margin-left: 23px;
 }
 
 .rooms_number h2 {
@@ -132,11 +133,11 @@ article h2 {
 }
 
 .bathrooms_icon {
-  height: inherit;
-  width: inherit;
+  height: 50px;
+  width: 50px;
   background: url("../images/icon_bath.png");
   background-repeat: no-repeat;
-  margin-left: 35px;
+  margin-left: 23px;
 }
 
 .bathrooms_number h2 {
